@@ -15,7 +15,7 @@ const { MongoClient } = require('mongodb');
 
   //Databse connect atlas DB
 
-const client = new MongoClient(process.env.AtlasDB, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(process.env.AtlasDB);
 
 async function connectToMongoDB() {
     try {
