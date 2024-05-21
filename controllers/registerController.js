@@ -7,10 +7,15 @@ exports.register = async (req, res) => {
   const { name, email, phoneNumber, password } = req.body;
 
   try {
-    let user = await User.findOne({ email });
-
-    if (user) {
-      return res.status(400).json({ msg: "User already exists" });
+    let userEmail = await User.findOne({ email });
+    let userPhoneNumber = await User.findOne({ phoneNumber });
+    if (userEmail) {
+      return res.status(400).json({ message: "Email already registered" });
+    }
+    if (userPhoneNumber) {
+      return res
+        .status(400)
+        .json({ message: "Phone Number already registered" });
     }
 
     user = new User({
@@ -34,11 +39,14 @@ exports.register = async (req, res) => {
       { expiresIn: "1h" },
       (err, token) => {
         if (err) throw err;
-        res.status(201).json({ token });
+        res.status(201).json({
+          message: "User Registered Successfully !",
+          authToken: token,
+        });
       }
     );
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Something Went Wrong");
+    res.status(500).json({ message: "Something Went Wrong" });
   }
 };
