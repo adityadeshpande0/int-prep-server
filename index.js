@@ -4,7 +4,7 @@ const app = express();
 const cors = require("cors");
 const connection = require("./db");
 const mongoose = require("mongoose");
-const authRoutes = require('./routes/registerUserRoute')
+const authRoutes = require('./routes/approutes')
   //Databse connect atlas DB
 connection()
 
