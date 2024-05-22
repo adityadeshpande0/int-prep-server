@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   phoneNumber: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  
 });
 
 //Saving the password in UserSchema if password is modified
