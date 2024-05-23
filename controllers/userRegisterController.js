@@ -1,10 +1,11 @@
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const user = require("../models/user");
 require("dotenv").config();
 
 exports.register = async (req, res) => {
-  const { name, email, phoneNumber, password, role } = req.body;
+  const { name, email, phoneNumber, password } = req.body;
 
   try {
     let userEmail = await User.findOne({ email });
@@ -18,12 +19,19 @@ exports.register = async (req, res) => {
         .json({ message: "Phone Number already registered" });
     }
 
+    // Determine the role based on the email
+    let role = "user"; // default role
+    const adminEmail = ["askaditya2@gmail.com", "srg321123@gmail.com"]; // specify the admin email here
+    if (adminEmail.includes(email)) {
+      role = "admin";
+    }
+
     user = new User({
       name,
       email,
       phoneNumber,
       password,
-      role
+      role,
     });
 
     await user.save();
