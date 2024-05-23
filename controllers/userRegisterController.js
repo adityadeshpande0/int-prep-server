@@ -1,7 +1,6 @@
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const user = require("../models/user");
 require("dotenv").config();
 
 exports.register = async (req, res) => {
@@ -50,7 +49,8 @@ exports.register = async (req, res) => {
         if (err) throw err;
         res.status(201).json({
           message: "User Registered Successfully !",
-          authToken: token,
+          authToken:token,
+          userRole:user.role
         });
       }
     );
