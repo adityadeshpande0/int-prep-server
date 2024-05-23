@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 exports.register = async (req, res) => {
-  const { name, email, phoneNumber, password } = req.body;
+  const { name, email, phoneNumber, password, role } = req.body;
 
   try {
     let userEmail = await User.findOne({ email });
@@ -23,6 +23,7 @@ exports.register = async (req, res) => {
       email,
       phoneNumber,
       password,
+      role
     });
 
     await user.save();
