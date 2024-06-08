@@ -34,7 +34,7 @@ exports.login = async (req, res) => {
         res.json({
           message: "Request Successful !",
           username: user.name,
-          userRole:`${user.role} Login Success !`,
+          userRole: `${user.role} Login Success !`,
           authToken: token,
         });
       }

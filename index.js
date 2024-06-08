@@ -9,10 +9,8 @@ const authRoutes = require('./routes/approutes')
   //Databse connect atlas DB
 connection()
 const corsOptions = {
-  origin: 'http://localhost:5173', // Allow only this origin
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: false,
-  optionsSuccessStatus: 204
+  origin: 'https://intprep.netlify.app', // Allow only this origin to access the resource
+  optionsSuccessStatus: 200, // For legacy browser support
 };
 //middelwares
 app.use(express.json());
