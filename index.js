@@ -15,7 +15,7 @@ const corsOptions = {
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true, // Allow cookies to be sent/received in CORS requests
-  optionsSuccessStatus:400 , // Some legacy browsers choke on 204
+  optionsSuccessStatus:200 , // Some legacy browsers choke on 204
 };
 
 // Apply CORS middleware
