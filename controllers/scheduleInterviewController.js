@@ -10,10 +10,6 @@ exports.scheduleInterviewController = async (req, res) => {
         console.log('Decoded user:', req.user);
         console.log('User ID:', userId);
 
-        if (!userId) {
-            return res.status(400).json({ error: 'User ID is missing' });
-        }
-
         const newInterviewRequest = new InterviewRequest({
             userId,
             date,

@@ -8,10 +8,11 @@ const app = express();
 
 // Database connection
 connection();
-
+//https://intprep.netlify.app
 // CORS Options
 const corsOptions = {
-  origin: 'https://intprep.netlify.app', // Allow this origin to access the resource
+  // origin:'https://intprep.netlify.app',
+  origin: 'http://localhost:5173',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true, // Allow cookies to be sent/received in CORS requests
