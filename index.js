@@ -11,8 +11,8 @@ connection();
 //https://intprep.netlify.app
 // CORS Options
 const corsOptions = {
-  // origin:'https://intprep.netlify.app',
-  origin: 'http://localhost:5173',
+  origin:'https://intprep.netlify.app',
+  // origin: 'http://localhost:5173',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true, // Allow cookies to be sent/received in CORS requests

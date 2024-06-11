@@ -6,11 +6,14 @@ const {
   scheduleInterviewController,
 } = require("../controllers/scheduleInterviewController");
 const authenticateToken = require("../middlewares/authenticateToken");
+const { getInterviewListController } = require("../controllers/getInterviewListController");
 
 router.post("/registerUser", register);
 
 router.post("/loginuser", login);
 
 router.post("/scheduleInterview",authenticateToken, scheduleInterviewController);
+
+router.get('/interview-requests', authenticateToken, getInterviewListController);
 
 module.exports = router;
