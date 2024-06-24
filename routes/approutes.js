@@ -8,6 +8,7 @@ const {
 const authenticateToken = require("../middlewares/authenticateToken");
 const { getInterviewListController } = require("../controllers/getInterviewListController");
 const { withdrawRequestController } = require("../controllers/withdrawRequestController");
+const { approveRequestController } = require("../controllers/approveRequestController");
 
 router.post("/registerUser", register);
 
@@ -18,5 +19,7 @@ router.post("/scheduleInterview",authenticateToken, scheduleInterviewController)
 router.get('/interview-requests', authenticateToken, getInterviewListController);
 
 router.delete('/interview-requests/:requestId/withdraw', authenticateToken, withdrawRequestController);
+
+router.post('/interview-requests/:requestId/approve', authenticateToken, approveRequestController);
 
 module.exports = router;

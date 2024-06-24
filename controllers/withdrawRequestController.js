@@ -4,7 +4,7 @@ exports.withdrawRequestController = async (req, res) => {
   try {
     const requestId = req.params.requestId;
     const userId = req.user ? req.user.id : null;
-    const isAdmin = req.user ? req.user.role === 'admin' : false; // Assuming role is part of user object
+    const isAdmin = req.user ? req.user.role === "admin" : false; // Assuming role is part of user object
 
     if (!userId) {
       return res.status(401).json({ error: "User not authenticated" });
@@ -17,7 +17,10 @@ exports.withdrawRequestController = async (req, res) => {
       interviewRequest = await InterviewRequest.findOne({ _id: requestId });
     } else {
       // Regular user can only withdraw their own request
-      interviewRequest = await InterviewRequest.findOne({ _id: requestId, userId });
+      interviewRequest = await InterviewRequest.findOne({
+        _id: requestId,
+        userId,
+      });
     }
 
     if (!interviewRequest) {

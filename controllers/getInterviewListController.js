@@ -15,7 +15,7 @@ exports.getInterviewListController = async (req, res) => {
     } else {
       interviewRequests = await InterviewRequest.find();
     }
-    res.status(200).json(interviewRequests);
+    res.status(200).json({ interviewRequests, isAdmin });
   } catch (error) {
     console.error("Error fetching interview requests:", error);
     res.status(400).json({ error: "Something went wrong!" });
