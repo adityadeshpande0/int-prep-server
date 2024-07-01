@@ -11,7 +11,7 @@ const bookingSchema = new mongoose.Schema({
 
   date: { type: Date, required: true },
   timeslot: { type: String, required: true },
-  status: { type: Boolean, default: false },
+  status: { type: String, default: "pending", required:true },
 });
 
 module.exports = mongoose.model("Bookings", bookingSchema);

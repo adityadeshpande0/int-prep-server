@@ -14,19 +14,17 @@ exports.approveRequestController = async (req, res) => {
       return res.status(403).json({ error: "User not authorized to approve requests" });
     }
 
-    const interviewRequest = await InterviewRequest.findOne({ _id: requestId });
+    const interviewRequest = await InterviewRequest.findById(requestId);
 
     if (!interviewRequest) {
       return res.status(404).json({ error: "Interview request not found" });
     }
 
     // Update the interview request to approved
-    interviewRequest.status = true;
+    interviewRequest.status = "approved";
     await interviewRequest.save();
 
-    res
-      .status(200)
-      .json({ message: "Interview request approved successfully" });
+    res.status(200).json({ message: "Interview request approved successfully" });
   } catch (error) {
     console.error("Error approving interview request:", error);
     res.status(400).json({ error: "Something went wrong!" });
